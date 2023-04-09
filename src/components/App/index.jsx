@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import "components/App/App.css";
 import Form from "components/Form";
+import Film from "components/Film";
+import Notification from "components/Notification";
 
 
 const App=() =>{
-const [name, setName] = useState ('superman')
+const [name, setName] = useState ('')
 const [listFilms, setlistFilms] = useState ([]) //список фильмов, который будем обновлять
 const options = {
   method: 'GET',
@@ -13,38 +15,38 @@ const options = {
     'X-RapidAPI-Host': 'moviesdb5.p.rapidapi.com'
   }
 };
-/*при загрузке старницы, хочу чтобы он сразу показывал фильмы*/
-/*useEffect(()=>{
-  //console.log('поиск фильма')
-  fetch(`https://moviesdb5.p.rapidapi.com/om?s=${name}`, options)
-  .then(data => data.json())
-  .then(res => setlistFilms(res))
-  console.log(listFilms.Search) //выводит результат поиска в консоль
-},[])*/
-
 useEffect(()=>{
-  //console.log('поиск фильма')
+  {console.log(name)}
   fetch(`https://moviesdb5.p.rapidapi.com/om?s=${name}`, options)
   .then(data => data.json())
-  .then(res => setlistFilms(res))
-  console.log(listFilms.Search) //выводит результат поиска в консоль
-},[name])
+  .then(res => {
+    console.log(res)
+    {console.log(name)}
+    
+    if(res.Response === "False"){
+      return (
+         <Notification/> //как мне добавить уведомление на экран, что ничего не найдено
+         //{console.log('Ничего не найденo')}   
+      )
+    } else{
+      setlistFilms(res.Search)
+    }
+  })},[name])
 
-
-
-/*{listFilms.map((film)=>(
-            <pre key={film.Title}>{JSON.stringify(film)}</pre>
-          ))}*/
   return (
     <div className=""> 
+    {console.log(listFilms)}
+    <Form setName={setName}/>    
     
-    <Form setName={setName} name={name}/>
-          <div>
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-[390px]:grid-cols-1 gap-4 justify-items: center">
+      {listFilms.length > 0 &&
+           listFilms.map((film) => {
+              return <Film Film={film} key={film.imdbID}/>
+      })}
+    </div>
+    
+    
           
-          </div>
-        
-
-       
     </div>
   );
 }
