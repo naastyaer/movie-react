@@ -1,7 +1,7 @@
 import Button from "components/Button";
 import { useState } from "react";
 const Form = ({ setName}) =>{
-    const [inputText, setinputText] = useState (' ')
+    const [inputText, setinputText] = useState ('')
         
     const handelClick = (e)=>{
         e.preventDefault()

@@ -3,31 +3,27 @@ import "components/App/App.css";
 import Form from "components/Form";
 import Film from "components/Film";
 import Notification from "components/Notification";
+import Modal from "components/Modal";
 
 
 const App=() =>{
 const [name, setName] = useState ('')
-const [listFilms, setlistFilms] = useState ([]) //список фильмов, который будем обновлять
+const [show, setShow] = useState (false)
+const [listFilms, setlistFilms] = useState ([])
+const [infoFilm, setinfoFilm] = useState ({})
 const options = {
   method: 'GET',
   headers: {
     'X-RapidAPI-Key': 'Td24bfq18lmsh5KqGTIsh6amrNJRp1h4MngjsnIdn2a8CFcrl5',
     'X-RapidAPI-Host': 'moviesdb5.p.rapidapi.com'
   }
-};
-useEffect(()=>{
-  {console.log(name)}
+}
+useEffect(()=>{ 
   fetch(`https://moviesdb5.p.rapidapi.com/om?s=${name}`, options)
   .then(data => data.json())
   .then(res => {
-    console.log(res)
-    {console.log(name)}
-    
     if(res.Response === "False"){
-      return (
-         <Notification/> //как мне добавить уведомление на экран, что ничего не найдено
-         //{console.log('Ничего не найденo')}   
-      )
+      setlistFilms([])
     } else{
       setlistFilms(res.Search)
     }
@@ -35,19 +31,18 @@ useEffect(()=>{
 
   return (
     <div className=""> 
-    {console.log(listFilms)}
-    <Form setName={setName}/>    
     
+    <Form setName={setName}/>    
+    <Modal show={show} onClose={()=>setShow(false)}/>
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-[390px]:grid-cols-1 gap-4 justify-items: center">
-      {listFilms.length > 0 &&
-           listFilms.map((film) => {
-              return <Film Film={film} key={film.imdbID}/>
-      })}
+     
+      {listFilms.length > 0 ? listFilms.map((film) => {return <Film Film={film} key={film.imdbID} setShow={setShow} setinfoFilm={setinfoFilm} infoFilm={infoFilm}/>}): <Notification/> }
+    
     </div>
     
     
           
     </div>
-  );
+  )
 }
 export default App;
