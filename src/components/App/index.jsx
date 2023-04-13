@@ -4,6 +4,8 @@ import Form from "components/Form";
 import Film from "components/Film";
 import Notification from "components/Notification";
 import Modal from "components/Modal";
+import Header from "components/Header";
+
 
 
 const App=() =>{
@@ -30,18 +32,14 @@ useEffect(()=>{
   })},[name])
 
   return (
-    <div className=""> 
-    
-    <Form setName={setName}/>    
-    <Modal show={show} onClose={()=>setShow(false)}/>
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-[390px]:grid-cols-1 gap-4 justify-items: center">
-     
-      {listFilms.length > 0 ? listFilms.map((film) => {return <Film Film={film} key={film.imdbID} setShow={setShow} setinfoFilm={setinfoFilm} infoFilm={infoFilm}/>}): <Notification/> }
-    
-    </div>
-    
-    
-          
+    <div className="w-full h-screen bg-black"> //какую правильно задать высоту, чтобы при добавлении фильмов не было белых пробелов по бокам?
+      <div className="w-[90%] m-auto">
+        <Header setName={setName} />
+        <Modal show={show} onClose={()=>setShow(false)} infoFilm={infoFilm}/>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-[390px]:grid-cols-1 gap-4 last:gap-0 justify-items: center bg-black pt-10">
+          {listFilms.length > 0 ? listFilms.map((film) => {return <Film Film={film} key={film.imdbID} setShow={setShow} setinfoFilm={setinfoFilm} infoFilm={infoFilm}/>}): <Notification/> }
+        </div>
+      </div>  
     </div>
   )
 }

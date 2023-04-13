@@ -14,11 +14,10 @@ const Form = ({ setName}) =>{
 
     return (
         <div className="mb-10">
+            
             <form>
-                <h2 className=" text-xl md:text-2xl mb-5 text-center mt-2">Введите название фильма</h2>
-                <div className='flex flex-col gap-4 items-center'> 
-                    <div className="flex flex-col">
-                        <label className="">Название</label>
+                <div className='flex flex-row gap-4 items-center'> 
+                    <div className="flex ">
                         <input 
                             onChange={(purchase) =>{ 
                                 setinputText(purchase.target.value)     

@@ -2,7 +2,7 @@ const Notification = ({}) =>{
     //{console.log(Film)}
     
     return (  
-    <div className="">
+    <div className="text-white text-center w-screen">
         <p>Ничего не найдено</p>
     </div>
     )
