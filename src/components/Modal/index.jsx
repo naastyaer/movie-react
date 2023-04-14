@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 const Modal = ({show, onClose,infoFilm}) =>{
     if(!show){
         return null
@@ -6,13 +5,13 @@ const Modal = ({show, onClose,infoFilm}) =>{
    
     return (  
     <div className="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-70 z-10">
-        <div className="bg-white rounded shadow-lg w-10/12 md:w-2/3">
+        <div className="bg-white rounded shadow-lg   h-[520px]">
             <div class="border-b px-4 py-2 flex justify-between items-center">
                 <h3 class="font-semibold text-lg">{infoFilm.Title}</h3>
                 
             </div>
             <div class="p-3 flex flex-row">
-                <img src={infoFilm.Poster} className="w-1/2 pr-10"/>
+                <img src={infoFilm.Poster} className="w-1/2 pr-10 h-[400px]"/>
                 <div>
                     <p>Actors</p>
                     <p className="border-b-2">{infoFilm.Actors}</p>  
