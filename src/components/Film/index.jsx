@@ -25,7 +25,7 @@ const Film = ({Film, setShow,setinfoFilm}) =>{
           </div>
 
           <div className="flex flex-col justify-between items-center h-[250px] mb-3">
-            <img src={Film.Poster} className="w-4/4 h-5/6 mb-5"/>
+            <img src={Film.Poster} className="w-4/4 h-5/6 mb-5" alt="description of image"/>
             <Button title={'подробнее'} handelClick={handelClick}/>
           </div>
           
