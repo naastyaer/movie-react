@@ -37,7 +37,7 @@ useEffect(()=>{
         <div className=" m-auto bg-black h-full">
           
           <Modal show={show} onClose={()=>setShow(false)} infoFilm={infoFilm}/>
-          <div className=" w-[90%]  m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-[390px]:grid-cols-1 gap-4 last:gap-0 justify-items: center bg-black pt-10">
+          <div className=" justify-items: center w-[90%]  m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-[391px]:grid-cols-1 gap-4 items-center bg-black pt-10">
             {listFilms.length > 0 ? listFilms.map((film) => {return <Film Film={film} key={film.imdbID} setShow={setShow} setinfoFilm={setinfoFilm} infoFilm={infoFilm}/>}): <Notification/> }
           </div>
         </div>

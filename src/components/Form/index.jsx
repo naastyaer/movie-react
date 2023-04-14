@@ -17,7 +17,7 @@ const Form = ({ setName}) =>{
             
             <form>
                 <div className='flex flex-row gap-4 items-center'> 
-                    <div className="flex ">
+                    <div className="flex mt-2">
                         <input 
                             onChange={(purchase) =>{ 
                                 setinputText(purchase.target.value)     

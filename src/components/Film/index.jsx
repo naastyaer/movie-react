@@ -17,15 +17,15 @@ const Film = ({Film, setShow,setinfoFilm}) =>{
     /*из-за того что запрос на клике, поэтом инфа так долго обновляется в окне?*/
   
     return (  
-    <div className="mb-10 text-black py-2 px-3 shadow-nd border-b-2 bg-gradient-to-r from-zinc-400 to-zinc-700 backdrop-opacity-30  w-3/4 ">
+    <div className="mb-10 text-black py-2 px-3 shadow-nd border-b-2 bg-gradient-to-r from-zinc-400 to-zinc-700 backdrop-opacity-30  w-2/4 ">
         <div className="flex flex-col justify-between items-center"> 
-          <div className="text-center h-[100px]">
-            <p className="mt-1 text-lg font-bold h-[50px]">{Film.Title}</p>
+          <div className="text-center md:h-[100px] h-[70px]">
+            <p className="mt-1 text-lg font-bold h-[30px]">{Film.Title}</p>
             <p className="mt-1">{Film.Year}</p>
           </div>
 
-          <div className="flex flex-col justify-between items-center h-[250px] mb-3">
-            <img src={Film.Poster} className="w-4/4 h-5/6 mb-5" alt="description of image"/>
+          <div className="flex flex-col justify-between items-center h-[150px] mb-3 bg-yellow-500">
+            <img src={Film.Poster} className="w-4/4 md:h-5/6 mb-5 h-[100px]" alt="description of image"/>
             <Button title={'подробнее'} handelClick={handelClick}/>
           </div>
           
